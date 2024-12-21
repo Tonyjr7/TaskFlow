@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <p>Title: {{ form.title }}</p>
+        <p>Description: {{ form.description }}</p>
+        <p>Due Date: {{ form.due_date }}</p>
+        <p>Priority: {{ form.priority }}</p>
+        {{ form.status }}
+        <input type="submit" value="Create Task">
+    </form>
+</body>
+</html>

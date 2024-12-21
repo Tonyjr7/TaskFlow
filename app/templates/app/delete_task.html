@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <h2>Are you sure you want to delete this task?</h2>
+        <input type="submit" value="Delete">
+        <a href="{% url 'task_detail' account_id=account.id pk=id.id  %}">Cancel</a>
+    </form>
+</body>
+</html>

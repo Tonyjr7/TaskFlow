@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+</head>
+<body>
+    <h1>{{ task.title }}</h1>
+    <p>{{ task.description }}</p>
+    {% if task.priority == 1 %}
+            <p>Priority: Low</p>
+        {% elif task.priority == 2 %}
+            <p>Priority: Medium</p>
+        {% elif task.priority == 3 %}
+            <p>Priority: High</p>
+        {% endif %}
+        {% if task.completed == True %}
+            <p>Completed:<input type="checkbox" checked onclick="return false;"/></p>
+        {% else %}
+            <p>Completed:<input type="checkbox" onclick="return false;"/></p>
+        {% endif %}
+    <p>Due Date: {{ task.due_date }}</p>
+    <p>Updated At: {{ task.updated_at }}</p>
+    <p>Created At: {{ task.created_at }}</p>
+
+    <a href="{% url 'dashboard' account_id=account.id %}">Back to Task List</a>
+    <a href="{% url 'delete_task' account_id=account.id pk=task.id %}">Delete Task</a>
+    <a href="{% url 'update_task' account_id=account.id pk=task.id %}">Edit Task</a>
+</body>
+</html>

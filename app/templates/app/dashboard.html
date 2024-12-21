@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for task in data %}
+        <a href="{% url 'task_detail' account_id=account.id pk=task.id  %}"><h3>{{ task.title }}</h3></a>
+        {% if task.priority == 1 %}
+            <p>Low </p>
+        {% elif task.priority == 2 %}
+            <p>Medium</p>
+        {% elif task.priority == 3 %}
+            <p>High</p>
+        {% endif %}
+        {% if task.completed == True %}
+            <p>Completed:<input type="checkbox" checked onclick="return false;"/></p>
+        {% else %}
+            <p>Completed:<input type="checkbox" onclick="return false;"/></p>
+        {% endif %}
+        <p>Due Date: {{ task.due_date }}</p>
+
+    {% endfor %}
+    <a href="{% url 'add_task' account_id=account.id %}">Add Task</a>
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+      </form>
+</body>
+</html>

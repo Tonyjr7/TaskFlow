@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #dc3545; /* Red for deletion */
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+            color: #333333;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777777;
+            text-align: center;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 5px;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Task Deleted</h1>
+    </div>
+    <div class="content">
+        <p>Hello, {{ account.first_name }}</p> 
+        <p>The following task has been successfully deleted from your account:</p>
+        <ul>
+            <li><strong>Title:</strong> {{ task.title }}</li>
+            <li><strong>Description:</strong> {{ task.description }}</li>
+            {% if task.priority == 1 %}
+                <li><strong>Priority:</strong> Low</li>
+            {% elif task.priority == 2 %}
+                <li><strong>Priority:</strong> Medium</li>
+            {% elif task.priority == 3 %}
+                <li><strong>Priority:</strong> High</li>
+            {% endif %}
+            {% if task.completed == True %}
+                <li><strong>Status:</strong> Completed</li>
+            {% else %}
+                <li><strong>Status:</strong> Not Completed</li>
+            {% endif %}
+            <li><strong>Due Date:</strong> {{ task.due_date }}</li>
+        </ul>
+        <p>If this was a mistake, you can create the task again from your dashboard.</p>
+        <p>Best regards,</p>
+        <p>The TaskFlow Team</p>
+    </div>
+    <div class="footer">
+        <p>Dream Wave Inc. | <a href="https://whatsapp.com/channel/0029VajvJs0KmCPU9w5y9Z0X">Dream Wave</a></p>
+    </div>
+</div>
+
+</body>
+</html>
