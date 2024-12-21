@@ -135,22 +135,22 @@ def UpdateTaskView(request, account_id, pk):
             task.title = title
             task.save()
 
-            def update_task_email(account, task):
+            # def update_task_email(account, task):
 
-                email_content = render_to_string('app/task_update_confirmation.html', {
-                    "task": task,
-                    "account": account,
-                })
+            #     email_content = render_to_string('app/task_update_confirmation.html', {
+            #         "task": task,
+            #         "account": account,
+            #     })
 
-                send_mail(
-                    subject='Task Updated Successfully',
-                    message='',  # Plain text fallback can be left empty
-                    html_message=email_content,  # Use rendered HTML content
-                    from_email=settings.EMAIL_HOST_USER,
-                    recipient_list=[account.email],
-                )
+            #     send_mail(
+            #         subject='Task Updated Successfully',
+            #         message='',  # Plain text fallback can be left empty
+            #         html_message=email_content,  # Use rendered HTML content
+            #         from_email=settings.EMAIL_HOST_USER,
+            #         recipient_list=[account.email],
+            #     )
 
-            update_task_email(account, task)
+            # update_task_email(account, task)
 
             return redirect('dashboard', account_id=account.id)
     elif request.method == 'GET':

@@ -6,8 +6,8 @@
     <title>Detail</title>
 </head>
 <body>
-    <h1>{{ task.title }}</h1>
-    <p>{{ task.description }}</p>
+    <h1>Title: {{ task.title }}</h1>
+    <p>Description: {{ task.description }}</p>
     {% if task.priority == 1 %}
             <p>Priority: Low</p>
         {% elif task.priority == 2 %}

@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h2>Dashboard Ni Mi OOOO</h2>
     {% for task in data %}
         <a href="{% url 'task_detail' account_id=account.id pk=task.id  %}"><h3>{{ task.title }}</h3></a>
         {% if task.priority == 1 %}
@@ -27,7 +28,13 @@
 
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
-        <button type="submit">Log Out</button>
-      </form>
+        <button onclick="areyousure()" type="submit">Log Out</button>
+    </form>
+
+    <script>
+        function areyousure(){
+            alert('Are you sure you want to log out?');
+        };
+    </script>
 </body>
 </html>
